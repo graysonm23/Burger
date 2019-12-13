@@ -10,8 +10,14 @@ app.use(express.static(path.join(__dirname, "public")));
 //?Using the middlewares to grab the data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+var exphbs = require("express-handlebars");
+//?Express-handlebars middleware
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+var routes = require("./controllers/burgersController.js");
+app.use(routes);
 
 //?Listen to open PORT
 app.listen(PORT, function() {
