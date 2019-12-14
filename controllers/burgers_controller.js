@@ -6,7 +6,7 @@ router.get("/", function(req, res) {
   res.redirect("/index");
 });
 
-router.get("/", function(req, res) {
+router.get("/index", function(req, res) {
   burger.selectAll(function(data) {
     var hbsObject = {
       burger: data
