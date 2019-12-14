@@ -4,13 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../public/assets/css/style.css" type="text/css" />
-    <title>MVC With Cats!</title>
+    <title>Eat-DA-Burger!</title>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="./../../models/burger.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
-    {{{ body }}}
+    <div class="container">
+        <div class="row">
+            <div class="img">
+                <img src="#" alt="">
+            </div>
+            <div class="header">
+                <h1>Eat-Da-Burger!</h1>
+            </div>
+            <br>
+            <!-- Importing from index.handlebars -->
+            {{{ body }}}
+            <br>
+            <form action="burger/create" method="POST">
+
+                <!-- Text Area Input -->
+                <div class="row">
+                    <!-- Empty Div to help center textarea -->
+                    <div class="col-md-3"></div>
+
+                    <!-- Burger Input Box -->
+                    <div class="form-group col-md-6">
+                        <center><label for="new_burger" class="red_font">Request a new burger and place your
+                                order!</label></center>
+                        <textarea class="form-control" columns="8" rows="4" id="new_burger"
+                            name="burger_name"></textarea>
+                    </div>
+
+                    <!-- Empty Div to help center textarea -->
+                    <div class="col-md-3"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <center>
+                    <button id="submit-button" type="submit" class="btn btn-danger">Place Order</button>
+                </center>
+
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
 </body>
 
 </html>
