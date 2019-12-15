@@ -7,7 +7,7 @@ router.get("/", function(req, res) {
 });
 
 router.get("/index", function(req, res) {
-  burger.selectAll(function(data) {
+  burger.all(function(data) {
     var hbsObject = {
       burger: data
     };
@@ -16,14 +16,28 @@ router.get("/index", function(req, res) {
   });
 });
 router.post("/burger/create", function(req, res) {
-  burger.insertOne(req.body.burger_name, function() {
-    res.redirect("/index");
-  });
+  burger.create(
+    ["burger_name", "devoured"],
+    [req.body.burger_name, req.body.devoured],
+    function() {
+      res.redirect("/");
+    }
+  );
 });
-router.post("/burger/eat/:id", function(req, res) {
-  burger.updateOne(req.params.id, function() {
-    res.redirect("/index");
-  });
+router.put("/burger/eat/:id", function(req, res) {
+  var condition = "id = " + req.params.id;
+
+  console.log("condition", condition);
+
+  burger.update(
+    {
+      devoured: req.body.devoured
+    },
+    condition,
+    function() {
+      res.redirect("/");
+    }
+  );
 });
 
 // Export routes for server.js to use.

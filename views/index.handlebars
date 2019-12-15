@@ -2,16 +2,22 @@
     <div class="col-md-6">
         <h4>HOT-N-READY!</h4>
         <div class="hot-n-ready">
-            {{#each burgers}}
-            {{#unless devoured}}
-            <form action="burger/eat/{{id}}" method="POST">
-                <div class="input-group">
-                    <li class="form-control">{{id}}. {{burger_name}}</li>
-                    <button class="btn btn-success eatBtn" type="submit">Eat It!</button>
-                </div>
-            </form>
-            {{/unless}}
-            {{/each}}
+            <ul>
+                {{#each burgers}}
+                {{#unless this.devoured}}
+                <li>
+                    {{this.id}}
+                    {{this.burger_name}}
+
+                    <form action="/{{this.id}}?_method=PUT" method="POST">
+                        <input type="hidden" name="devoured" value="true">
+                        <button class="btn-primary" type="submit">Devour It!</button>
+                    </form>
+
+                </li>
+                {{/unless}}
+                {{/each}}
+            </ul>
         </div>
     </div>
 
