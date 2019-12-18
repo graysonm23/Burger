@@ -16,13 +16,9 @@ router.get("/index", function(req, res) {
   });
 });
 router.post("/burger/create", function(req, res) {
-  burger.create(
-    ["burger_name", "devoured"],
-    [req.body.burger_name, req.body.devoured],
-    function() {
-      res.redirect("/");
-    }
-  );
+  burger.create(["burger_name"], [req.body.burger_name], function() {
+    res.redirect("/");
+  });
 });
 router.put("/burger/eat/:id", function(req, res) {
   var condition = "id = " + req.params.id;
